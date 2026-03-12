@@ -15,15 +15,17 @@ GO
 --Drop DataWarehouse y volverlo a crear
 IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DataWarehouse')
 BEGIN
-	ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK INMEDIATE;
+	ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
 	DROP DATABASE DataWarehouse;
 END;
 GO
 
 --Crear el DataWarehouse
 CREATE DATABASE DataWarehouse;
+GO
 
 USE DataWarehouse;
+GO
 
 --Crear esquemas
 CREATE SCHEMA bronze;
