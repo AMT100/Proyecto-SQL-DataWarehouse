@@ -33,7 +33,7 @@ SELECT
   
 
 
--- If we check the category id, we can see that the pairs are divided by '_' instead of '-', so we have to replace it in order to have matching information between the 2 tables
+-- If we check the category id, the pairs are divided by '_' instead of '-', so we have to replace it in order to have matching information between the 2 tables
   SELECT DISTINCT id from bronze.erp_px_cat_g1v2
 
   SELECT sls_prd_key FROM bronze.crm_sales_details
@@ -69,5 +69,5 @@ SELECT
     LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt)-1 AS prd_end_dt_test
   FROM bronze.crm_prd_info
   WHERE prd_key IN ('AC-HE-HL-U509-R', 'AC-HE-HL-U509')
--- Using LEAD(), we create a new column with the content of the next row in the same partition (same prd_key), so the end date (new test column) comes from the next start date
--- Then, it is included in the main query
+-- Using LEAD(), a new column is created with the content of the next row in the same partition (same prd_key), so the end date (new test column) comes from the next start date
+-- Then it is included in the main query
