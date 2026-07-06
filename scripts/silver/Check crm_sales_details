@@ -27,7 +27,7 @@ FROM bronze.crm_sales_details
 WHERE sls_order_dt <= 0
 
 -- So it is changed to null
--- We also check if there are dates with more than 8 characters (a full length date), or if there are outliers (>2050, <1990)
+-- Also check if there are dates with more than 8 characters (a full length date), or if there are outliers (>2050, <1990)
 SELECT 
 NULLIF(sls_order_dt, 0) AS sls_order_dt
 FROM bronze.crm_sales_details
@@ -59,7 +59,7 @@ OR sls_quantity <= 0
 OR sls_price <= 0
 ORDER BY sls_sales, sls_quantity, sls_price
 
--- Apply the transformations. In the case of calculating sls_price, we change the value to NULL if there is a 0 in quantity
+-- Apply the transformations. In the case of calculating sls_price, change the value to NULL if there is a 0 in quantity
 SELECT DISTINCT
 sls_sales AS old_sls_sales,
 sls_quantity,
